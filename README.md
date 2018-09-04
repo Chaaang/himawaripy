@@ -1,18 +1,13 @@
-# himawaripy
-*Put near-realtime picture of Earth as your desktop background*
+# himawaripy 让实时气象卫星返回图像做你桌面
+> himawaripy 是基于Python3的脚本，它能获取近乎实时的气象卫星图像（ 来源于[ひまわり8号](https://en.wikipedia.org/wiki/Himawari_8) ）并设置为所有桌面的背景。
 
-![24 hours long animation by /u/hardypart](https://i.giphy.com/l3vRnMYNnbhdnz5Ty.gif)
-
-himawaripy is a Python 3 script that fetches near-realtime (10 minutes delayed)
-picture of Earth as its taken by
-[Himawari 8 (ひまわり8号)](https://en.wikipedia.org/wiki/Himawari_8) and sets it
-as your desktop background.
+![](https://i.giphy.com/l3vRnMYNnbhdnz5Ty.gif)
 
 Set a cronjob (or systemd service) that runs in every 10 minutes to automatically get the
 near-realtime picture of Earth.
 
-## Supported Desktop Environments
-### Tested
+## 支持的桌面环境 
+### 已测试
 * Unity 7
 * Mate 1.8.1
 * Pantheon
@@ -22,10 +17,10 @@ near-realtime picture of Earth.
 * Cinnamon 2.8.8
 * KDE
 
-### Not Supported
-* any other desktop environments that are not mentioned above.
+### 未测试
+* 上述未涉及到的桌面环境（P话）
 
-## Configuration
+## 参数
 
 ```
 usage:  [-h] [--version] [--auto-offset | -o OFFSET] [-l {4,8,16,20}]
