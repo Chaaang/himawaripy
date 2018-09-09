@@ -1,10 +1,17 @@
 # himawaripy 让实时气象卫星返回图像做你桌面
 > himawaripy 是基于Python3的脚本，它能获取近乎实时的气象卫星图像（ 来源于[ひまわり8号](https://en.wikipedia.org/wiki/Himawari_8) ）并设置为所有桌面的背景。
+>   
+> **本项目将持续把功能更新PR到原项目，也希望各位将功能更新PR到原项目和其他更新PR到本项目，谢谢。**
 
 ![](https://i.giphy.com/l3vRnMYNnbhdnz5Ty.gif)
 
-Set a cronjob (or systemd service) that runs in every 10 minutes to automatically get the
-near-realtime picture of Earth.
+> Set a cronjob (or systemd service) that runs in every 10 minutes to automatically get the
+> near-realtime picture of Earth.
+
+## 正在开发的功能
+
+* [ ] 生成的卫星图片在mac（16:9）下可以显示完整的地球
+* [ ] 生成的卫星图片在mac（16:9）下可以定位到中国🇨🇳
 
 ## 支持的桌面环境 
 ### 已测试
@@ -46,18 +53,17 @@ optional arguments:
                         directory to save the temporary background image
 ```
 
-Most of the time himawaripy can accurately detect your timezone if you pass the flag `--auto-offset`, although you may
-also set it manually by `-o` (or `--offset`) flag. If your timezone is beyond GMT by more than 10 hours, use the closest
+基本上，`--auto-offset` 可以准确的判断出你的时区，当然，你也可以通过 `-o` (或 `--offset`) 手动设置时区。  
+If your timezone is beyond GMT by more than 10 hours, use the closest
 one (either `+10` or `-12`).
 
 Increasing the level will increase the quality of the image as well as the time taken to download all the tiles and the
 memory consumption. For instance choosing 20 will make himawaripy use ~700 MiB of memory at its peak and the image will
 be around ~200 MB.
 
-You should set a deadline compatible with your cronjob (or timer) settings to assure that script will terminate in X
-minutes before it is started again.
+提醒，如果你想定时生成实时壁纸的话，`-d` 能确保脚本只在指定时间内完成否则取消。*默认无时间限制*
 
-You might use `--save-battery` to disable refreshing while running on battery power.
+不想在用电池时更新壁纸？`--save-battery` 适合你
 
 ### Nitrogen
 If you use nitrogen for setting your wallpaper, you have to enter this in your
@@ -70,23 +76,23 @@ mode=4
 bgcolor=#000000
 ```
 
-## Installation
-* You need a valid python3 installation including the python3-setuptools package
+## 安装过程
+**确保已经安装了 Python3 并已安装包 `python3-setuptools`**
 
 ```
 cd ~
 git clone https://github.com/boramalper/himawaripy.git
 
-# install
+# 安装
 sudo python3 setup.py install
 
-# test whether it's working
+# 检查有否安装成功
 himawaripy --auto-offset
 
-# Get the installation path of himawaripy by running the command
+# 这可以获取 himawaripy 安装位置
 which -- himawaripy
 
-# Set himawaripy to be called periodically
+# 定时启动 himawaripy
 
     ## Either set up a cronjob
         crontab -e
@@ -152,7 +158,7 @@ Finally, to launch it, enter this into the console:
     launchctl load ~/Library/LaunchAgents/org.boramalper.himawaripy.plist
 
 
-## Uninstallation
+## 卸载
 
 ```
 # Remove the cronjob
